@@ -71,4 +71,7 @@ public String registerUser(String username, String password, String cellPhoneNum
 
     return "Username successfully captured.\nPassword successfully captured.\nCell phone number successfully added.";
 }
+public boolean loginUser(String username, String password) {
+    return this.username.equals(username) && this.password.equals(password);
+}
 }
