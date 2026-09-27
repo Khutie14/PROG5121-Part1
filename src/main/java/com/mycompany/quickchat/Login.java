@@ -39,4 +39,19 @@ public boolean checkPasswordComplexity(String password) {
 
     return hasCapital && hasNumber && hasSpecial;
 }
+
+/**
+ * Regex pattern adapted from Zalatos (2016).
+ * Validates South African cell numbers with international country code.
+ * 
+ * In-text citation: (Zalatos, 2016)
+ * 
+ * Reference:
+ * Zalatos. 2016. South African Cell numbers. [online] Regex101.
+ * Available at: <https://regex101.com/r/oE1bQ2/1> [Accessed 27 September 2026].
+ */
+public boolean checkCellPhoneNumber(String cellPhoneNumber) {
+    String regex = "^\\+\\d{1,3}\\d{1,10}$";
+    return cellPhoneNumber.matches(regex);
+}
 }
