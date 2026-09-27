@@ -19,4 +19,8 @@ public class Login {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+public boolean checkUserName(String username) {
+    return username.contains("_") && username.length() <= 5;
+}
 }
