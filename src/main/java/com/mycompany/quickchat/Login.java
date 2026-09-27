@@ -54,4 +54,21 @@ public boolean checkCellPhoneNumber(String cellPhoneNumber) {
     String regex = "^\\+\\d{1,3}\\d{1,10}$";
     return cellPhoneNumber.matches(regex);
 }
+public String registerUser(String username, String password, String cellPhoneNumber) {
+    if (!checkUserName(username)) {
+        return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+    }
+    if (!checkPasswordComplexity(password)) {
+        return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+    }
+    if (!checkCellPhoneNumber(cellPhoneNumber)) {
+        return "Cell phone number incorrectly formatted or does not contain international code.";
+    }
+
+    this.username = username;
+    this.password = password;
+    this.cellPhoneNumber = cellPhoneNumber;
+
+    return "Username successfully captured.\nPassword successfully captured.\nCell phone number successfully added.";
+}
 }
