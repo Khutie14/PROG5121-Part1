@@ -17,9 +17,6 @@ SA cell number) and allows login with validation and unit tests.
 - Run `mvn test` to execute JUnit tests.
 - GitHub Actions runs the tests automatically on every push to `main`.
 
-## Video Presentation
-[Unlisted YouTube link here]
-
 ---
 
 ## REFERENCES
