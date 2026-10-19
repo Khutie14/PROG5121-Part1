@@ -56,20 +56,47 @@ public class Main {
 
                 switch (choice) {
                     case 1:
-                        System.out.println("Send Messages selected (Feature coming in next step!)");
+                        for (int i = 1; i <= numMessages; i++) {
+                            System.out.println("\n--- Message " + i + " of " + numMessages + " ---");
+                            
+                            // Generate a random 10-digit ID
+                            long randomNum = (long) (Math.random() * 9_000_000_000L) + 1_000_000_000L;
+                            String messageID = String.valueOf(randomNum);
+                            
+                            System.out.print("Enter recipient cell number: ");
+                            String recipient = scanner.nextLine();
+                            
+                            // Validate recipient using the Message class
+                            Message msg = new Message();
+                            System.out.println(msg.checkRecipientCell(recipient));
+                            
+                            System.out.print("Enter message (max 250 chars): ");
+                            String messageText = scanner.nextLine();
+                            
+                            // Check length using the Message class
+                            String lengthCheck = msg.checkMessageLength(messageText);
+                            System.out.println(lengthCheck);
+                            
+                            if (messageText.length() <= 250) {
+                                // Generate hash
+                                String hash = msg.createMessageHash(messageID, i, messageText);
+                                
+                                // Display details
+                                System.out.println("\nMessage ID: " + messageID);
+                                System.out.println("Message Hash: " + hash);
+                                System.out.println("Recipient: " + recipient);
+                                System.out.println("Message: " + messageText);
+                                
+                                // Ask what to do (Calls your Step 5 method!)
+                                String action = msg.SentMessage(scanner);
+                                System.out.println(action);
+                            } else {
+                                System.out.println("Message discarded due to length.");
+                            }
+                        }
                         break;
-                    case 2:
-                        System.out.println("Coming Soon.");
-                        break;
-                    case 3:
-                        System.out.println("Goodbye!");
-                        running = false;
-                        break;
-                    default:
-                        System.out.println("Invalid option. Please choose 1, 2, or 3.");
                 }
             }
         }
-        scanner.close();
     }
 }
