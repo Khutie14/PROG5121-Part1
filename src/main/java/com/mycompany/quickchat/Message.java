@@ -1,5 +1,5 @@
 package com.mycompany.quickchat;
-
+import java.util.Scanner;
 public class Message {
 
     // Check if Message ID is not more than 10 characters
@@ -36,4 +36,24 @@ public class Message {
         String lastWord = words[words.length - 1].replaceAll("[^a-zA-Z]", "").toUpperCase();
         
         return idPrefix + ":" + messageNum + ":" + firstWord + lastWord;
+    }// Step 5: Allow user to choose to send, disregard, or store
+    public String SentMessage(Scanner scanner) {
+        System.out.println("\nWhat would you like to do with this message?");
+        System.out.println("1) Send Message");
+        System.out.println("2) Disregard Message");
+        System.out.println("3) Store Message to send later");
+        System.out.print("Choose an option: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+
+        switch (choice) {
+            case 1:
+                return "Message successfully sent";
+            case 2:
+                return "Press 0 to delete the message";
+            case 3:
+                return "Message successfully stored";
+            default:
+                return "Invalid selection.";
+        }
     }}
